@@ -1,0 +1,130 @@
+#!/bin/bash
+set -e
+
+readme () {
+
+    open -a /Applications/Safari.app http://randymcmillan.github.com/cdv-osx-plugin-templates/
+
+}
+
+help () {
+    cat<<EOF
+
+    Usage: installer [install|uninstall|upgrade|help|readme]
+
+    Commands:
+
+    $ ./installer install
+
+    install    populates submodules and creates a symlink to the Xcode File
+    Templates Folder
+
+    $ ./installer uninstall
+
+    uninstall  removes synlinks from Xcode File Templates Folder
+
+    $ ./installer upgrade
+
+    upgrade    clobbers existing setup and installs fresh from git
+
+    $ ./installer help
+
+    help       print this msg
+
+    $ ./installer readme
+
+    readme     opens http://randymcmillan.github.com/cdv-ios-plugin-templates/
+    in Safari.app
+
+EOF
+
+}
+
+# populate submodules and create symlinks
+install () {
+
+    echo ' submodule init '
+    git submodule init
+    echo ' submodule update --init --recursive '
+    git submodule update --init --recursive
+
+    ls > submodules.txt
+
+    submodules=$(cat ./submodules.txt)
+
+    for template in $submodules; do
+
+        if [ -e ~/Library/Developer/Xcode/Templates/File\ Templates ]
+        then
+                
+            echo 'exists ~/Library/Developer/Xcode/Templates/File\ Templates '
+
+        else
+            
+            mkdir -p ~/Library/Developer/Xcode/Templates/File\ Templates
+            install
+        
+        fi
+
+            
+        if [ -e ~/Library/Developer/Xcode/Templates/File\ Templates/$template ]
+        then
+            
+            echo  '~/Library/Developer/Xcode/Templates/File\ Templates/'$template' already exists'
+        
+        else
+            
+            echo  'Symlinking '$template
+            ln -s $PWD/$template ~/Library/Developer/Xcode/Templates/File\ Templates/$template
+        
+        fi
+    
+    done
+
+    open ~/Library/Developer/Xcode/Templates/File\ Templates/
+}
+
+# if backup exists clobbers home vim and copies in backup
+uninstall () {
+
+    ls > submodules.txt
+
+    submodules=$(cat ./submodules.txt)
+
+    for template in $submodules; do
+   
+        if [ -e ~/Library/Developer/Xcode/Templates/File\ Templates/$template ]
+        then
+        
+        rm ~/Library/Developer/Xcode/Templates/File\ Templates/$template
+        echo  'removing symlink to ~/Library/Developer/Xcode/Templates/File\ Templates/'$template'! '
+
+        fi
+
+    done
+    
+}
+
+# Removes symlinks, pulls latest from git, installs it
+upgrade () {
+    uninstall
+    git pull
+    install
+}
+
+# bash test for a valid arg and execute it if so; otherwise show the help
+if [ "$1" != "" ]; then
+    wl=(install uninstall upgrade readme help)
+    for i in "${wl[@]}"
+    do
+        if [ "$i" == "$1" ]
+        then
+            $1
+            exit 0
+        fi
+    done
+fi
+
+# show some help
+help
+exit 0
