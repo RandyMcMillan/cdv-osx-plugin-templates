@@ -1,0 +1,3 @@
+[submodule "CDVOSXPlugin"]
+	path = CDVOSXPlugin
+	url = https://github.com/RandyMcMillan/CDVOSXPlugin.git
