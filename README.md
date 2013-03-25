@@ -17,7 +17,7 @@
 
 ###Installation:
 
-####`$ git clone https://github.com/RandyMcMillan/cdv-ios-plugin-templates.git`
+####`$ git clone https://github.com/RandyMcMillan/cdv-osx-plugin-templates.git`
 >Clone the repository to your home folder ~/
 
 ####`$ ./installer install`
@@ -52,7 +52,7 @@
 <br>
 
 ###`$ ./installer readme`
-- Open http://randymcmillan.github.com/cdv-ios-plugin-templates/ in browser. 
+- Open http://randymcmillan.github.com/cdv-osx-plugin-templates/ in browser. 
 <br>
 <br>
 
