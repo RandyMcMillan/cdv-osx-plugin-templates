@@ -12,7 +12,7 @@
     
 </div>
 
-![image](https://raw.github.com/RandyMcMillan/cdv-ios-plugin-templates/master/ScreenShots/ScreenShot.png)
+![image](https://raw.github.com/RandyMcMillan/cdv-osx-plugin-templates/master/ScreenShots/ScreenShot.png)
 
 
 ###Installation:
@@ -24,7 +24,7 @@
 >The installer script creates symlinks to ~/Library/Developer/Xcode/File Templates 
 
 
-![image](https://raw.github.com/RandyMcMillan/cdv-ios-plugin-templates/master/ScreenShots/ScreenShot5.png)
+![image](https://raw.github.com/RandyMcMillan/cdv-osx-plugin-templates/master/ScreenShots/ScreenShot5.png)
 
 ###Commands:
 
