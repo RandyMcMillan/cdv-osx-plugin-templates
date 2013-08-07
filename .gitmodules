@@ -3,4 +3,9 @@
 	url = https://github.com/RandyMcMillan/CDVOSXPlugin.git
 [submodule "CDVOSXBrowser"]
 	path = CDVOSXBrowser
-	url = https://github.com/RandyMcMillan/CDVOSXBrowser.git
+    url = https://github.com/RandyMcMillan/CDVOSXBrowser.git
+
+
+[submodule "CDVOSXStreamer"]
+	path = CDVOSXStreamer
+	url = https://github.com/RandyMcMillan/CDVOSXStreamer.git
